@@ -5,9 +5,8 @@ $ = document~getElementById
 # :: String -> String
 tpl = $ >> (.innerHTML)
 
-# proxy a value
-# :: A => A -> (-> A)
-proxy = (x) -> -> x
+# K combinator,  λx.λy.x
+k = (x) -> -> x
 
 # pseudo-templating function
 # type Template = String
