@@ -1,7 +1,6 @@
 # --- pages
-# Basically :
-# type Properties = Object
-# :: String -> (Properties -> String)
+# newtype Properties = (Map String String)
+# :: Map String (Properties -> String)
 # @todo this needs to allow proper routes
 Pages =
 	__DEFAULT__: 'home'
@@ -13,11 +12,11 @@ Pages =
 
 # --- router
 # type Route = String
-# :: Route -> String -> Either Boolean Array
+# type URL = String
+# :: Route -> URL -> Either Boolean Properties
 # KILL ME
 matches = (route, url) ->
-	if route is url
-		return []
+	return [] if route is url
 
 	route-parts = route / '/'
 	url-parts = url / '/'
@@ -33,8 +32,8 @@ matches = (route, url) ->
 	params
 
 matching-route = (routes, page) ->
-	for route, ctrl of routes
-		return [ctrl, that] if matches route, page
+	for route, ctrl of routes when matches route, page
+		return [ctrl, that]
 	[]
 
 # wow
