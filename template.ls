@@ -5,12 +5,12 @@ $ = document~getElementById
 # :: String -> String
 tpl = $ >> (.innerHTML)
 
-# K combinator,  λx.λy.x
+# :: a -> b -> a
 k = (x) -> -> x
 
 # pseudo-templating function
-# newtype Template = String
-# newtype Values = Object
+# type Template = String
+# type Properties = Object
 # type KeyPrefix = String
 # :: Template -> Values -> Maybe KeyPrefix -> Template
 interpolate = (raw, variables, keypath || '') ->
