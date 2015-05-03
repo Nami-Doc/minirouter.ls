@@ -9,8 +9,10 @@ tpl = $ >> (.innerHTML)
 k = (x) -> -> x
 
 # pseudo-templating function
-# type Template = String
-# :: Template -> Object -> Maybe String -> Template
+# newtype Template = String
+# newtype Values = Object
+# type KeyPrefix = String
+# :: Template -> Values -> Maybe KeyPrefix -> Template
 interpolate = (raw, variables, keypath || '') ->
 	keypath and+= '.'
 	for name, value of variables
